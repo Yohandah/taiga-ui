@@ -138,6 +138,14 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
+    maxLength: number | null = null;
+
+    @Input()
+    @tuiDefaultProp()
+    placeholder = ``;
+
+    @Input()
+    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<string | TuiStringifiableItem<any>> =
         ALWAYS_FALSE_HANDLER;
 
@@ -256,7 +264,7 @@ export class TuiInputTagComponent
 
     get hasExampleText(): boolean {
         return (
-            !!this.controller.exampleText &&
+            !!this.nativeFocusableElement?.placeholder &&
             this.computedFocused &&
             !this.hasValue &&
             !this.readOnly
